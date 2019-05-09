@@ -1,3 +1,1 @@
 # Gradebook
-
-Initial Commit

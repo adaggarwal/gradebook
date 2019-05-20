@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//Your name with the command line arguments as the application assumes the first string as the name of the user.
-//
-//The class Program is the main class encapsulating the main method.
+///Your name with the command line arguments as the application assumes the first string as the name of the user.
+///
+///The class Program is the main class encapsulating the main method.
 
 namespace GradeBook
 {
@@ -11,11 +11,11 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
+            string username;
             var gradeBookName = "first";
-            var book = new Book(gradeBookName, args);
-            book.WelcomeUser(args);
+            username = args.Length<1 ? "" : args[0];
+            var book = new Book(gradeBookName, username);
             AddShowStats(book);
-            book.ShowStatistics();
         }
 
         public static void AddShowStats(Book book)
@@ -24,6 +24,8 @@ namespace GradeBook
             book.ShowStatistics();
             Random random = new Random();
             book.AddGrade(random.Next(0,100));
+            System.Console.WriteLine("\nAfter adding the grade:");
+            book.ShowStatistics();
         } 
     }
 }

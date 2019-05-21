@@ -24,7 +24,10 @@ namespace GradeBook
             book.ShowStatistics();
             Random random = new Random();
             book.AddGrade(random.Next(0,100));
-            System.Console.WriteLine("\nAfter adding the grade:");
+            book.AddGrade(random.Next(0,100));
+            book.AddGrade(random.Next(0,100));
+            book.AddGrade(random.Next(0,100));
+            System.Console.WriteLine("\nAfter adding the grades:");
             book.ShowStatistics();
         } 
     }

@@ -15,36 +15,38 @@ namespace GradeBook
     {
         private List <double> grades;
         private string name;
-        private double highGrade = double.MinValue;
-        private double lowGrade = double.MaxValue;
-        private double avg = 0.0;
 
         ///Constructor
         /// User for initializing the members
         public Book(string name, string username)
         {
             WelcomeUser(username);
-            grades = new List<double>() { 1, 22, 56, 33.2, 45, 30, 32 };
+            grades = new List<double> {};
             this.name = name;
         }
 
         /// calculate statistics such as high, low and avg grade
-        public void CalculateStats()
+        public Statistics CalculateStats()
         {
+            var results = new Statistics();
+            results.High = double.MinValue;
+            results.Low = double.MaxValue;
+
             foreach (double gd in this.grades)
             {
-                avg += gd;
-                highGrade = Math.Max(highGrade,gd);
-                lowGrade = Math.Min(lowGrade,gd);
+                results.Avg += gd;
+                results.High = Math.Max(results.High,gd);
+                results.Low = Math.Min(results.Low,gd);
             }
-            avg /= this.grades.Count;
+            results.Avg /= this.grades.Count;
+            return results;
         }
 
         /// show the current statistics
         public void ShowStatistics()
         {
-            CalculateStats();
-            Console.WriteLine($"Min grade - {lowGrade}\nMax Grade- {highGrade}\nAvg Grade - {avg}");
+            var tempR = CalculateStats();
+            Console.WriteLine($"Min grade - {tempR.Low}\nMax Grade- {tempR.High}\nAvg Grade - {tempR.Avg}");
         }
 
         /// Welcomes the user
